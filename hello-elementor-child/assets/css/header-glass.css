@@ -1,0 +1,55 @@
+/* === Glass Header — TechEquity AI === */
+
+/* Sticky wrapper */
+.elementor-location-header,
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    /* smooth transition between states */
+    transition:
+        background-color 0.4s ease,
+        backdrop-filter 0.4s ease,
+        -webkit-backdrop-filter 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+/* Force inner Elementor sections transparent so blur shows through */
+.elementor-location-header .elementor-section,
+.elementor-location-header .e-con,
+.elementor-location-header .elementor-container {
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+/* ── State 1: page top — clean white, shadows on top / left / bottom ── */
+.elementor-location-header,
+.site-header {
+    background-color: rgba(255, 255, 255, 1);
+    border-bottom: 1px solid transparent;
+    box-shadow:
+        inset 0     8px 20px       rgba(0, 0, 0, 0.07),   /* top   inset */
+        inset 20px  0   20px -18px rgba(0, 0, 0, 0.14),   /* left  inset — neg spread stops bottom bleed */
+        inset -20px 0   20px -18px rgba(0, 0, 0, 0.14);   /* right inset — neg spread stops bottom bleed */
+}
+
+/* ── State 2: scrolled — distinguished glass effect ── */
+.elementor-location-header.header-glass-active,
+.site-header.header-glass-active {
+    background-color: rgba(255, 255, 255, 0.70) !important;
+    backdrop-filter: blur(20px) saturate(180%) brightness(1.05);
+    -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.05);
+    border-bottom: 1px solid rgba(200, 200, 220, 0.35);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.6) inset,
+        0 8px 32px rgba(0, 0, 0, 0.10);
+}
+
+/* Dropdown menus stay fully opaque */
+.elementor-location-header .elementor-nav-menu--dropdown,
+.elementor-location-header .sub-menu {
+    background-color: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+}
