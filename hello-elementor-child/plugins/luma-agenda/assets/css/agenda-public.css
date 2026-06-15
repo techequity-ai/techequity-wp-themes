@@ -1,0 +1,342 @@
+/* ── Luma Agenda Public Display ── */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Lora:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Outlined');
+
+.luma-agenda-display {
+  --la-bg: #f8f4eb;
+  --la-text: #262528;
+  --la-muted: #555357;
+  --la-faint: #8f8d91;
+  --la-faintest: #b3b1b5;
+  --la-border: #e4ddd4;
+  --la-line: #d8d0c6;
+
+  --keynote-badge: #c8b5ec; --keynote-text: #3c1875; --keynote-tint: #ede5f8;
+  --panel-badge: #ffa69b;   --panel-text: #891a0e;   --panel-tint: #ffe8e5;
+  --fireside-badge: #fcdb82; --fireside-text: #7a5000; --fireside-tint: #fef5d5;
+  --demo-badge: #9acbf5;    --demo-text: #1a3f7a;    --demo-tint: #ddf0ff;
+  --workshop-badge: #95dee3; --workshop-text: #0f5c63; --workshop-tint: #dff6f7;
+  --neutral-badge: #dddcde; --neutral-text: #3d3b3f; --neutral-tint: #f2f1f3;
+
+  background: var(--la-bg);
+  font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+  color: var(--la-text);
+  font-size: 16px;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.luma-agenda-display *,
+.luma-agenda-display *::before,
+.luma-agenda-display *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── App Container ── */
+.luma-agenda-display .la-app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 40px 80px;
+}
+
+/* ── Header ── */
+.luma-agenda-display .la-header {
+  margin-bottom: 32px;
+}
+.luma-agenda-display .la-org {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--la-muted);
+  margin-bottom: 10px;
+}
+.luma-agenda-display .la-title {
+  font-family: 'Lora', serif;
+  font-size: 62px;
+  font-weight: 400;
+  letter-spacing: -.01em;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.luma-agenda-display .la-date-row {
+  color: var(--la-muted);
+  margin-bottom: 2px;
+  font-size: 16px;
+}
+.luma-agenda-display .la-date-link {
+  color: var(--la-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--la-border);
+}
+.luma-agenda-display .la-date-link:hover {
+  border-bottom-color: var(--la-muted);
+}
+.luma-agenda-display .la-time-row,
+.luma-agenda-display .la-loc-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: var(--la-muted);
+  margin-bottom: 2px;
+}
+.luma-agenda-display .la-time-icon,
+.luma-agenda-display .la-loc-icon {
+  font-size: 14px !important;
+  color: var(--la-faint);
+  flex-shrink: 0;
+  line-height: 1;
+}
+.luma-agenda-display .la-mc {
+  font-size: 14px;
+  color: var(--la-muted);
+}
+.luma-agenda-display .la-description {
+  font-size: 15px;
+  color: var(--la-muted);
+  line-height: 1.55;
+  margin-top: 8px;
+  max-width: 640px;
+}
+
+/* ── Timeline ── */
+.luma-agenda-display .la-tl {
+  margin-top: 0;
+}
+.luma-agenda-display .la-row {
+  display: flex;
+  align-items: stretch;
+}
+.luma-agenda-display .la-time {
+  width: 94px;
+  min-width: 94px;
+  text-align: right;
+  padding-right: 14px;
+  padding-top: 2px;
+  flex-shrink: 0;
+  user-select: none;
+}
+.luma-agenda-display .la-tv {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--la-text);
+}
+.luma-agenda-display .la-dv {
+  font-size: 13px;
+  color: var(--la-faint);
+  margin-top: 2px;
+}
+.luma-agenda-display .la-spine {
+  width: 20px;
+  min-width: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+.luma-agenda-display .la-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--la-faintest);
+  margin-top: 3px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.luma-agenda-display .la-vl {
+  width: 1px;
+  flex: 1;
+  background: var(--la-line);
+  margin-top: 3px;
+  min-height: 10px;
+}
+.luma-agenda-display .la-cc {
+  flex: 1;
+  padding-bottom: 12px;
+  min-width: 0;
+}
+.luma-agenda-display .la-end {
+  display: flex;
+}
+
+/* Parallel sessions */
+.luma-agenda-display .la-par-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.luma-agenda-display .la-par-card {
+  min-width: 0;
+}
+
+/* ── Card ── */
+.luma-agenda-display .la-card {
+  border-radius: 12px;
+  border: 1px solid var(--la-border);
+  padding: 14px 16px;
+  background: white;
+  transition: box-shadow .15s, transform .15s;
+}
+.luma-agenda-display .la-card:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,.13);
+  transform: translateY(-2px);
+}
+
+.luma-agenda-display .la-card-meta {
+  font-size: 14px;
+  color: var(--la-muted);
+  margin-bottom: 4px;
+}
+.luma-agenda-display .la-card-type-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.luma-agenda-display .la-card-loc-wrap {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.luma-agenda-display .la-card-loc-icon {
+  font-size: 14px !important;
+  color: var(--la-faint);
+  line-height: 1;
+}
+.luma-agenda-display .la-card-loc {
+  font-size: 14px;
+  color: var(--la-faint);
+}
+
+/* ── Badge ── */
+.luma-agenda-display .la-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'IBM Plex Sans', sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.6;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,.1);
+}
+.luma-agenda-display .la-badge--keynote      { background: var(--keynote-badge); color: var(--keynote-text); }
+.luma-agenda-display .la-badge--panel        { background: var(--panel-badge);   color: var(--panel-text); }
+.luma-agenda-display .la-badge--fireside_chat { background: var(--fireside-badge); color: var(--fireside-text); }
+.luma-agenda-display .la-badge--demo         { background: var(--demo-badge);    color: var(--demo-text); }
+.luma-agenda-display .la-badge--workshop     { background: var(--workshop-badge); color: var(--workshop-text); }
+.luma-agenda-display .la-badge--welcome,
+.luma-agenda-display .la-badge--closing,
+.luma-agenda-display .la-badge--announcement,
+.luma-agenda-display .la-badge--registration,
+.luma-agenda-display .la-badge--break,
+.luma-agenda-display .la-badge--lunch        { background: var(--neutral-badge); color: var(--neutral-text); }
+
+/* ── Card content ── */
+.luma-agenda-display .la-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -.01em;
+  margin-bottom: 10px;
+}
+
+/* ── Speakers ── */
+.luma-agenda-display .la-speakers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 6px 12px;
+  margin-bottom: 8px;
+}
+.luma-agenda-display .la-spk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.luma-agenda-display .la-spk-av {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.luma-agenda-display .la-spk-info {
+  flex: 1;
+  min-width: 0;
+}
+.luma-agenda-display .la-spk-name {
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+}
+.luma-agenda-display .la-spk-co {
+  font-size: 13px;
+  color: var(--la-muted);
+  display: block;
+}
+.luma-agenda-display .la-card-notes {
+  font-size: 14px;
+  color: var(--la-muted);
+  font-style: italic;
+  margin-top: 8px;
+  border-top: 1px solid rgba(0,0,0,.06);
+  padding-top: 6px;
+}
+.luma-agenda-display .la-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 14px;
+  color: var(--la-muted);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--la-border);
+  background: white;
+  text-decoration: none;
+  margin-top: 8px;
+  font-family: inherit;
+  font-weight: 500;
+  transition: background .1s;
+}
+.luma-agenda-display .la-card-link:hover {
+  background: #ede8df;
+  color: var(--la-text);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .luma-agenda-display .la-app { padding: 24px 16px 60px; }
+  .luma-agenda-display .la-title { font-size: 48px; }
+  .luma-agenda-display .la-time { width: 64px; min-width: 64px; padding-right: 10px; }
+  .luma-agenda-display .la-tv { font-size: 13px; }
+  .luma-agenda-display .la-dv { font-size: 12px; }
+  .luma-agenda-display .la-card-title { font-size: 16px; }
+  .luma-agenda-display .la-speakers { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .luma-agenda-display .la-title { font-size: 36px; }
+  .luma-agenda-display .la-app { padding: 20px 12px 48px; }
+}
+
+/* ── Print ── */
+@media print {
+  .luma-agenda-display .la-app { padding: 0; max-width: 100%; }
+  .luma-agenda-display .la-par-wrap { flex-direction: row !important; gap: 4pt; }
+  .luma-agenda-display .la-par-card { flex: 1; }
+  .luma-agenda-display .la-card:hover { box-shadow: none; transform: none; }
+}

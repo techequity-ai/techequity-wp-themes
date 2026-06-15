@@ -1,0 +1,1 @@
+Add this folder to the 'wp-content/plugins' folder 
